@@ -2,6 +2,7 @@ import "./App.css";
 import React from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
+import { set } from "lodash";
 
 function App() {
   const [allDice, setAllDice] = React.useState(allNewDice());
@@ -22,15 +23,25 @@ function App() {
     setAllDice(allNewDice());
   }
 
-  function holdDice(id){
-    console.log(id)
+  function holdDice(id) {
+    setAllDice((allDice) =>
+      allDice.map((die) => {
+        return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
+      })
+    );
   }
 
   return (
     <main>
       <div className="inner">
         {allDice.map((dieNum) => (
-          <Die value={dieNum.value} key={dieNum.id} isHeld={dieNum.isHeld} holdDice={holdDice} id={dieNum.id}/>
+          <Die
+            value={dieNum.value}
+            key={dieNum.id}
+            isHeld={dieNum.isHeld}
+            holdDice={holdDice}
+            id={dieNum.id}
+          />
         ))}
       </div>
       <button className="roll-dice" onClick={rollDice}>
