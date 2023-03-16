@@ -1,7 +1,10 @@
 import "./App.css";
+import React from "react";
 import Die from "./components/Die";
 
 function App() {
+  const [allDice, setAllDice] = React.useState(allNewDice());
+
   function allNewDice() {
     const array = [];
     for (let i = 0; i < 10; i++) {
@@ -9,21 +12,13 @@ function App() {
     }
     return array;
   }
-  console.log(allNewDice());
 
   return (
     <main>
       <div className="inner">
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
-        <Die value={1} />
+        {allDice.map((dieNum) => (
+          <Die value={dieNum} />
+        ))}
       </div>
     </main>
   );
