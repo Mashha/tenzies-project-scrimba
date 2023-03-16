@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 
 function App() {
   const [allDice, setAllDice] = React.useState(allNewDice());
-  console.log(allDice);
+
   function allNewDice() {
     const array = [];
     for (let i = 0; i < 10; i++) {
@@ -26,7 +26,7 @@ function App() {
     <main>
       <div className="inner">
         {allDice.map((dieNum) => (
-          <Die value={dieNum.value} key={dieNum.id} />
+          <Die value={dieNum.value} key={dieNum.id} isHeld={dieNum.isHeld}/>
         ))}
       </div>
       <button className="roll-dice" onClick={rollDice}>
