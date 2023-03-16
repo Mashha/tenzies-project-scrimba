@@ -13,6 +13,11 @@ function App() {
     return array;
   }
 
+  function rollDice(){
+    setAllDice(allNewDice())
+  }
+
+
   return (
     <main>
       <div className="inner">
@@ -20,6 +25,7 @@ function App() {
           <Die value={dieNum} />
         ))}
       </div>
+      <button className="roll-dice" onClick={rollDice}>Roll</button>
     </main>
   );
 }

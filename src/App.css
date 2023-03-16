@@ -24,8 +24,10 @@ main {
   height: 379px;
   border-radius: 10px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 30px;
 }
 
 .inner {
@@ -47,4 +49,23 @@ main {
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.roll-dice {
+  font-family: "Karla", sans-serif;
+  padding: 10px 35px;
+  background-color: #5035ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.roll-dice:focus {
+  outline: none;
+}
+
+.roll-dice:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
