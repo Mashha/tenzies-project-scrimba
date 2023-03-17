@@ -7,7 +7,7 @@ import { first, set } from "lodash";
 function App() {
   const [allDice, setAllDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
-
+ 
   React.useEffect(
     function () {
       const allHeld = allDice.every((die) => die.isHeld);
@@ -80,7 +80,7 @@ function App() {
         ))}
       </div>
       <button className="roll-dice" onClick={rollDice}>
-        Roll
+        {tenzies === true ? "New game" : "Roll"}
       </button>
     </main>
   );
