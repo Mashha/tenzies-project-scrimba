@@ -2,10 +2,24 @@ import "./App.css";
 import React from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
-import { set } from "lodash";
+import { first, set } from "lodash";
 
 function App() {
   const [allDice, setAllDice] = React.useState(allNewDice());
+  const [tenzies, setTenzies] = React.useState(false);
+
+  React.useEffect(
+    function () {
+      const allHeld = allDice.every((die) => die.isHeld);
+      const firstValue = allDice[0].value;
+      const allSame = allDice.every((die) => firstValue === die.value);
+      if (allHeld && allSame) {
+        setTenzies(true);
+        console.log("you won");
+      }
+    },
+    [allDice]
+  ); // run when dice array changes
 
   function allNewDice() {
     const array = [];
