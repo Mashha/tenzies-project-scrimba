@@ -19,8 +19,24 @@ function App() {
     return array;
   }
 
+  //generate new die every time
+  function generateNewDie() {
+    return {
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid(),
+    };
+  }
+
   function rollDice() {
-    setAllDice(allNewDice());
+    setAllDice((allDice) =>
+      allDice.map((die) => {
+        if (die.isHeld === true) {
+          return die;
+        }
+        return generateNewDie();
+      })
+    );
   }
 
   function holdDice(id) {
