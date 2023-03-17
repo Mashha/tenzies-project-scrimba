@@ -26,8 +26,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 30px;
+  justify-content: space-evenly;
 }
 
 .inner {
@@ -36,6 +35,19 @@ main {
   grid-template-rows: repeat(2, 1fr);
   justify-items: center;
   grid-gap: 20px;
+}
+
+.title {
+  font-family: "Karla", sans-serif;
+  font-size: 40px;
+}
+
+.instructions {
+  font-family: "inter", sans-serif;
+  font-size: 13px;
+  text-align: center;
+  margin-top: 0;
+  padding: 0 10px;
 }
 
 .die-div {
