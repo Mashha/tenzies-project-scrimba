@@ -7,7 +7,7 @@ import Confetti from "react-confetti";
 function App() {
   const [allDice, setAllDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
- 
+
   React.useEffect(
     function () {
       const allHeld = allDice.every((die) => die.isHeld);
@@ -42,14 +42,19 @@ function App() {
   }
 
   function rollDice() {
-    setAllDice((allDice) =>
-      allDice.map((die) => {
-        if (die.isHeld === true) {
-          return die;
-        }
-        return generateNewDie();
-      })
-    );
+    if (!tenzies) {
+      setAllDice((allDice) =>
+        allDice.map((die) => {
+          if (die.isHeld === true && tenzies === false) {
+            return die;
+          }
+          return generateNewDie();
+        })
+      );
+    } else {
+      setTenzies(false)
+      setAllDice(allNewDice())
+    }
   }
 
   function holdDice(id) {
